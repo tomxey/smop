@@ -30,6 +30,7 @@ def print_header(fp):
 
 
 def main():
+    options.parse_args()
     tar = None
     if "M" in options.debug:
         import pdb

@@ -182,19 +182,19 @@ behaves like regular comments.""")
 # zero -- meaning "don't ignore errors"
 # minus one --  meaning "ignore all errors" """)
 
-args = parser.parse_args(namespace=sys.modules[__name__])
+debug = []
+filename = '-'
+testing_mode = False
+no_comments = False
+debug_parser = False
 
-xfiles = args.exclude.split(",") if args.exclude else []
-debug = args.debug.split(":") if args.debug else []
-filename = ""
-
-def foo():
-    """
-    >>> args = parser.parse_args("a b c".split())
-    >>> print args.filelist
-    ['a', 'b', 'c'
-
-    """
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
+
+def parse_args():
+    args = parser.parse_args(namespace=sys.modules[__name__])
+
+    xfiles = args.exclude.split(",") if args.exclude else []
+    debug = args.debug.split(":") if args.debug else []
+    filename = ""
